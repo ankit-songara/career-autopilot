@@ -92,7 +92,6 @@ const requiredSystemPaths = [
   'GOVERNANCE.md',
   'SECURITY.md',
   'SUPPORT.md',
-  'TRADEMARK.md',
 ];
 
 const requiredBootstrapPaths = [

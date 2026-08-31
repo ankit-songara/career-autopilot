@@ -73,6 +73,10 @@ pip install -r extensions/apply-factory/requirements.txt
 
 Then open the repo in an AI coding CLI (Claude Code, Codex, OpenCode, Qwen, Kimi, …) and just start talking —
 the onboarding flow (`doctor.mjs`) walks you through creating your `cv.md`, `config/profile.yml`, and `portals.yml`.
+
+For Codex, see [CODEX.md](CODEX.md): run `codex` interactively in the repo root — slash commands are not
+guaranteed there, so ask in plain language (e.g. "Run career-ops scan mode") — or headless with
+`codex exec "your prompt"` for one-shot workers.
 To use the auto-apply engine, also copy `extensions/apply-factory/answer-bank.example.yaml` to `answer-bank.yaml`
 and install [Kimi WebBridge](https://chromewebstore.google.com/detail/kimi-webbridge/fldmhceldgbpfpkbgopacenieobmligc).
 

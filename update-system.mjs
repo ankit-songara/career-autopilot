@@ -309,13 +309,11 @@ const SYSTEM_PATHS = [
   'VERSION',
   'DATA_CONTRACT.md',
   'MANIFESTO.md',
-  'manifesto.mjs',
-  'SIGNATURES.md',
   'CONTRIBUTING.md',
   'MAINTAINERS.md',
   'ARCHITECTURE.md',
-  // Translated READMEs removed in this fork; README.md stays system-owned
-  // because updates now come from this fork's own repo (see CANONICAL_REPO).
+  // Translated READMEs were removed in this fork. README.md stays
+  // system-owned because updates come from CANONICAL_REPO (this fork).
   'README.md',
   'CHANGELOG.md',
   'CODE_OF_CONDUCT.md',
@@ -325,12 +323,21 @@ const SYSTEM_PATHS = [
   'LEGAL_DISCLAIMER.md',
   'SECURITY.md',
   'SUPPORT.md',
-  'TRADEMARK.md',
   'LICENSE',
   'CITATION.cff',
   '.editorconfig',
   '.github/',
   'package.json',
+  'package-lock.json',
+  // Fork additions: the auto-apply engine and its agent-facing modes
+  'extensions/apply-factory/',
+  'modes/briefing.md',
+  'modes/fill.md',
+  'modes/kb-review.md',
+  'modes/learn.md',
+  'modes/linkedin-easy.md',
+  'modes/linkedin.md',
+  'modes/Full_stack/',
   'build-cv-latex.mjs',
   'build-cv-html.mjs',
   'cv-sections-core.mjs',
