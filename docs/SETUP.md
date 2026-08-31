@@ -8,16 +8,17 @@
 
 ## Quick Start
 
-### Recommended — one command
+### Recommended — clone this repo
 
 ```bash
-npx @santifer/career-ops init
+git clone https://github.com/ankit-songara/career-autopilot.git
+cd career-autopilot
+npm install
 ```
 
-`npx` ships with Node.js — it runs the installer once without installing anything globally. This clones the latest release into `./career-ops` and installs dependencies. Then move into the workspace and open your AI CLI:
+Then open your AI CLI:
 
 ```bash
-cd career-ops
 claude   # or codex / qwen / opencode / agy / grok
 ```
 
@@ -51,12 +52,12 @@ codex exec "Run career-ops tracker mode and summarize the current statuses."
 <summary>Prefer to clone the repo yourself?</summary>
 
 ```bash
-git clone https://github.com/santifer/career-ops.git
-cd career-ops
+git clone https://github.com/ankit-songara/career-autopilot.git
+cd career-autopilot
 npm install
 ```
 
-Then open your AI CLI in the folder — the same first-run onboarding applies. Use this path if you want to track a specific branch, contribute, or audit the code before installing dependencies.
+Then open your AI CLI in the folder — the same first-run onboarding applies. Use this path if you want to track a specific branch, contribute, or audit the code before installing dependencies. (The upstream project this fork builds on lives at [santifer/career-ops](https://github.com/santifer/career-ops).)
 
 </details>
 

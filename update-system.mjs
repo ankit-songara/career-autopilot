@@ -37,9 +37,12 @@ import { fileURLToPath, pathToFileURL } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = __dirname;
 
-const CANONICAL_REPO = 'https://github.com/santifer/career-ops.git';
-const RAW_VERSION_URL = 'https://raw.githubusercontent.com/santifer/career-ops/main/VERSION';
-const RELEASES_API = 'https://api.github.com/repos/santifer/career-ops/releases/latest';
+// This fork updates from its own repo — NOT upstream santifer/career-ops.
+// Pulling upstream directly would overwrite this fork's README and identity
+// files; upstream improvements are merged manually instead.
+const CANONICAL_REPO = 'https://github.com/ankit-songara/career-autopilot.git';
+const RAW_VERSION_URL = 'https://raw.githubusercontent.com/ankit-songara/career-autopilot/main/VERSION';
+const RELEASES_API = 'https://api.github.com/repos/ankit-songara/career-autopilot/releases/latest';
 
 // Matches a semver, with or without a leading `v` and an optional
 // Release Please component prefix (e.g. `career-ops-v1.9.0` → `1.9.0`).
@@ -311,23 +314,9 @@ const SYSTEM_PATHS = [
   'CONTRIBUTING.md',
   'MAINTAINERS.md',
   'ARCHITECTURE.md',
+  // Translated READMEs removed in this fork; README.md stays system-owned
+  // because updates now come from this fork's own repo (see CANONICAL_REPO).
   'README.md',
-  'README.ar.md',
-  'README.cn.md',
-  'README.da.md',
-  'README.de.md',
-  'README.es.md',
-  'README.fr.md',
-  'README.hi.md',
-  'README.ja.md',
-  'README.ko-KR.md',
-  'README.pl.md',
-  'README.pt-BR.md',
-  'README.ru.md',
-  'README.ta.md',
-  'README.ua.md',
-  'README.zh-TW.md',
-  'README.tr.md',
   'CHANGELOG.md',
   'CODE_OF_CONDUCT.md',
   'CONTRIBUTORS.md',

@@ -67,11 +67,16 @@ like Greenhouse), one page, POST on submit. Most fields are plain
    semantic â‰¥0.7 â†’ else leave blank + record in `unfilled_fields`).
 4. Snapshot the form (same JSON shape as `kimi_snapshot.md`, `"ats": "lever"`)
    to `{SNAPSHOT_PATH}`.
-5. Click **Submit application** (scrollIntoView + fresh rect).
+5. STOP and show the user what was filled. Only click **Submit application**
+   (scrollIntoView + fresh rect) after the user confirms, or if auto-submit
+   is explicitly enabled (`behavior.auto_submit: true` in answer-bank.yaml
+   AND `auto_submit: true` in config.yaml).
 6. Verify the confirmation ("Application submitted"/thank-you page) and report.
 
 ## Hard rules
 
+- Never submit without user confirmation unless auto-submit is explicitly
+  enabled in both answer-bank.yaml and config.yaml.
 - Never invent legal/EEO/sponsorship/salary answers.
 - If a required field has no matching answer, STOP before submitting and
   report the label.

@@ -11,9 +11,15 @@ Input.dispatch{Mouse,Key}Event events are trusted and reach iframe content.
 WHAT THIS SCRIPT DOES
   - Opens each LinkedIn job URL, clicks Easy Apply.
   - Walks Contact -> Resume -> (Top choice) -> Additional Questions -> Review.
-  - Fills known answers from answer-bank.yaml; answers dropdowns by keyboard
-    typeahead (focus the <select>, press first letter, Enter).
-  - Submits (auto_submit in answer-bank.yaml) and records the result.
+  - Fills known answers; answers dropdowns by keyboard typeahead (focus the
+    <select>, press first letter, Enter). The answer values come from the
+    agent driving this script (which reads answer-bank.yaml) — this script
+    itself does not parse the answer bank.
+  - `submit` is a bare click primitive with NO built-in gate: it clicks
+    whatever is at the Submit coordinates. The caller (you, or the agent
+    following the kimi_*.md prompts) is the only submit gate — the prompts
+    require user confirmation unless auto-submit is explicitly enabled in
+    both answer-bank.yaml and config.yaml.
 
 WHAT IT DELIBERATELY DOES NOT DO (yet)
   - It cannot *read* arbitrary new additional-question text on its own — the

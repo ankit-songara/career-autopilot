@@ -76,13 +76,18 @@ style hashed classes and `aria-*` attributes).
    â†’ else blank + `unfilled_fields`).
 4. Snapshot (JSON shape from `kimi_snapshot.md`, `"ats": "ashby"`) to
    `{SNAPSHOT_PATH}`.
-5. Click **Submit application** (scrollIntoView + fresh rect, atomic).
+5. STOP and show the user what was filled. Only click **Submit application**
+   (scrollIntoView + fresh rect, atomic) after the user confirms, or if
+   auto-submit is explicitly enabled (`behavior.auto_submit: true` in
+   answer-bank.yaml AND `auto_submit: true` in config.yaml).
 6. Ashby may gate with a captcha or email verification â€” if so, STOP and
    report (user supplies codes). Otherwise verify the success screen and
    report.
 
 ## Hard rules
 
+- Never submit without user confirmation unless auto-submit is explicitly
+  enabled in both answer-bank.yaml and config.yaml.
 - Never invent legal/EEO/sponsorship/salary answers.
 - Required field with no matching answer â†’ STOP before submit, report label.
 - Captcha / login wall â†’ STOP and report. No evasion.

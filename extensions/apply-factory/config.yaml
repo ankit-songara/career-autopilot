@@ -14,8 +14,11 @@ llm:
   temperature: 0.1
 
 kimi_webbridge:
-  # Safe defaults: the flow stops for user review before every submit.
-  # Flip these only once you trust the flow end-to-end.
+  # Submit policy — enforced by the AGENT following prompts/kimi_*.md, not by
+  # Python code (orchestrator.py never reads these keys). The prompts stop for
+  # user review before every submit unless auto_submit is true BOTH here and
+  # in answer-bank.yaml (behavior.auto_submit). Flip only once you trust the
+  # flow end-to-end.
   never_auto_submit: true
   auto_submit: false
   checkpoint_timeout_sec: 900
