@@ -1,21 +1,22 @@
 cff-version: 1.2.0
-message: "If you use career-ops, please cite it using these metadata."
-title: "Career-Ops: AI-Powered Job Search Pipeline"
+message: "If you use career-autopilot, please cite it using these metadata."
+title: "career-autopilot: AI-Powered Job Search Automation with Auto-Apply"
 type: software
 authors:
+  - family-names: "Songara"
+    given-names: "Ankit"
+    website: "https://github.com/ankit-songara"
   - family-names: "Fernández de Valderrama"
     given-names: "Santiago"
     website: "https://santifer.io"
-url: "https://santifer.io"
-repository-code: "https://github.com/santifer/career-ops"
+url: "https://github.com/ankit-songara/career-autopilot"
+repository-code: "https://github.com/ankit-songara/career-autopilot"
 license: MIT
 keywords:
   - ai
   - job-search
   - claude-code
   - career
-  - career-ops
-  - careerops
+  - auto-apply
   - automation
   - llmops
-  - go-tui

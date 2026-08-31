@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-// career-ops scaffolder — one-command install.
+// career-ops scaffolder â€” one-command install.
 // Clones the repo at the latest release tag and installs dependencies.
 // It deliberately does NOT create cv.md / config/profile.yml / portals.yml:
 // the agent runs a conversational onboarding on first launch (see AGENTS.md
-// "First Run — Onboarding"), which is triggered precisely by those files
+// "First Run â€” Onboarding"), which is triggered precisely by those files
 // being absent. Pre-creating them from the examples would suppress that
 // onboarding and leave the user with placeholder data.
 import { execFileSync } from "node:child_process";
@@ -11,12 +11,12 @@ import { existsSync, readdirSync } from "node:fs";
 import { join, delimiter } from "node:path";
 import { ensureSkillEntrypoints } from "./skill-entrypoints.mjs";
 
-const REPO = "https://github.com/santifer/career-ops.git";
-const LATEST_RELEASE = "https://api.github.com/repos/santifer/career-ops/releases/latest";
+const REPO = "https://github.com/ankit-songara/career-autopilot.git";
+const LATEST_RELEASE = "https://api.github.com/repos/ankit-songara/career-autopilot/releases/latest";
 const NPM = process.platform === "win32" ? "npm.cmd" : "npm";
 
 // career-ops is AI-agnostic: every one of these CLIs reads AGENTS.md and works
-// out of the box. We only detect them to tailor the final message — we never
+// out of the box. We only detect them to tailor the final message â€” we never
 // install, configure, or remove anything per-CLI.
 const SUPPORTED_CLIS = [
   { name: "Claude Code", cmd: "claude" },
@@ -29,16 +29,16 @@ const SUPPORTED_CLIS = [
   { name: "Grok Build CLI", cmd: "grok" },
 ];
 
-const USAGE = `career-ops — set up an AI job search workspace.
+const USAGE = `career-ops â€” set up an AI job search workspace.
 
 Usage:
   npx career-ops init [folder]    Create a new workspace (default: ./career-ops)
 
 After setup, open your AI coding tool inside the folder and paste a job offer.
-Docs: https://github.com/santifer/career-ops`;
+Docs: https://github.com/ankit-songara/career-autopilot`;
 
 function die(msg) {
-  console.error(`\n✗ ${msg}\n`);
+  console.error(`\nâœ— ${msg}\n`);
   process.exit(1);
 }
 
@@ -104,7 +104,7 @@ async function main() {
 
   // 1. Clone at the latest stable release (fall back to the default branch).
   const tag = await latestTag();
-  console.log(`\n→ Cloning career-ops${tag ? ` @ ${tag}` : ""} into ${display} ...`);
+  console.log(`\nâ†’ Cloning career-ops${tag ? ` @ ${tag}` : ""} into ${display} ...`);
   const cloneArgs = ["clone", "--depth=1"];
   if (tag) cloneArgs.push("--branch", tag);
   cloneArgs.push(REPO, target);
@@ -115,23 +115,23 @@ async function main() {
   }
 
   // 2. Install dependencies.
-  console.log("\n→ Installing dependencies (npm install) ...");
+  console.log("\nâ†’ Installing dependencies (npm install) ...");
   try {
     execFileSync(NPM, ["install"], { cwd: target, stdio: "inherit" });
   } catch {
-    console.warn('\n! npm install failed — you can re-run it manually later with "npm install".');
+    console.warn('\n! npm install failed â€” you can re-run it manually later with "npm install".');
   }
 
   // 2b. Bootstrap CLI skill entrypoints (covers CLIs added after the cloned release).
   const bootstrapped = ensureSkillEntrypoints(target);
   if (bootstrapped.length > 0) {
-    console.log(`\n→ Bootstrapped ${bootstrapped.length} CLI skill entrypoint(s) for this workspace`);
+    console.log(`\nâ†’ Bootstrapped ${bootstrapped.length} CLI skill entrypoint(s) for this workspace`);
   }
 
   // 3. Next steps. We do NOT scaffold cv.md / profile.yml / portals.yml here:
   // their absence is what triggers the agent's conversational onboarding on
   // first launch, which sets them up far better than copying placeholders.
-  console.log(`\n✓ career-ops is ready in ${display}\n`);
+  console.log(`\nâœ“ career-ops is ready in ${display}\n`);
   console.log("Next steps:");
   console.log(`  1. cd ${target}`);
 
@@ -145,9 +145,9 @@ async function main() {
     console.log(`  2. Open your AI coding tool here, e.g.:  ${SUPPORTED_CLIS.map((c) => c.cmd).join(", ")}`);
   }
 
-  console.log("\nOn first launch it walks you through setup — your CV, profile and target");
-  console.log("roles — just by chatting. Nothing to configure by hand.");
-  console.log("\ncareer-ops is AI-agnostic — Claude Code, Codex, Qwen, OpenCode, Copilot, Antigravity and Grok all work.");
+  console.log("\nOn first launch it walks you through setup â€” your CV, profile and target");
+  console.log("roles â€” just by chatting. Nothing to configure by hand.");
+  console.log("\ncareer-ops is AI-agnostic â€” Claude Code, Codex, Qwen, OpenCode, Copilot, Antigravity and Grok all work.");
   console.log("\nOptional (for PDF generation):");
   console.log("  npx playwright install chromium\n");
 }

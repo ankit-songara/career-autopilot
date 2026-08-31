@@ -1,7 +1,7 @@
 {
-  "name": "career-ops",
+  "name": "career-autopilot",
   "version": "1.27.0",
-  "description": "AI-powered job search pipeline — works with any AI coding CLI (Claude Code, Codex, OpenCode, Antigravity, Grok, Qwen, Kimi, Copilot)",
+  "description": "AI-powered job search automation with an auto-apply engine — extended from career-ops; works with any AI coding CLI (Claude Code, Codex, OpenCode, Antigravity, Grok, Qwen, Kimi, Copilot)",
   "private": true,
   "engines": {
     "node": ">=18"
@@ -82,11 +82,17 @@
     "grok",
     "ai-agent-skill"
   ],
-  "author": "Santiago Fernández de Valderrama <hi@santifer.io> (https://santifer.io)",
-  "homepage": "https://santifer.io",
+  "author": "Ankit Songara (https://github.com/ankit-songara)",
+  "contributors": [
+    "Santiago Fernández de Valderrama <hi@santifer.io> (https://santifer.io) — author of upstream career-ops"
+  ],
+  "homepage": "https://github.com/ankit-songara/career-autopilot",
   "repository": {
     "type": "git",
-    "url": "https://github.com/santifer/career-ops"
+    "url": "https://github.com/ankit-songara/career-autopilot"
+  },
+  "bugs": {
+    "url": "https://github.com/ankit-songara/career-autopilot/issues"
   },
   "license": "MIT",
   "dependencies": {

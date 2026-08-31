@@ -157,12 +157,16 @@ documents/*
 # PII (e.g. cv/jane-doe-master-cv.pdf). #1723
 data/intake-state.json
 
-extensions/apply-factory/snapshots/*.jpg
+# snapshots hold filled form answers (JSON) and screenshots — never commit any of it
+extensions/apply-factory/snapshots/*
+!extensions/apply-factory/snapshots/.gitkeep
 
 # personal data - never commit
 extensions/apply-factory/answer-bank.yaml
 extensions/apply-factory/kb.sqlite
 extensions/apply-factory/artifacts/
+# scraped job pipeline (linkedin-inbox.json etc.) — root data/* doesn't cover this path
+extensions/apply-factory/data/
 kb.sqlite
 data/applications.md
 batch/tracker-additions/merged/

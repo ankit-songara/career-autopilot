@@ -53,9 +53,12 @@ step number — you need this for the final snapshot.
 ### 4. Review step
 
 When you reach the "Review your application" step (final step), proceed
-directly to step 5 (snapshot) then click Submit application automatically.
+to step 5 (snapshot), then STOP and show the user what was filled.
+Only click Submit application after the user confirms — or if the user
+has explicitly enabled auto-submit for this session (`behavior.auto_submit:
+true` in their answer-bank.yaml AND `auto_submit: true` in config.yaml).
 
-### 5. Snapshot (do NOT submit)
+### 5. Snapshot (do NOT submit yet)
 
 When user says "snapshot":
 
@@ -79,13 +82,16 @@ When user says "snapshot":
    }
    ```
 
-4. Click **Submit application**.
+4. If the user has confirmed (or auto-submit is explicitly enabled — see
+   step 4), click **Submit application**. Otherwise stop here and wait.
 
-5. Report: "Submitted. Snapshot saved at {SNAPSHOT_PATH}."
+5. Report: "Submitted. Snapshot saved at {SNAPSHOT_PATH}." — or, when
+   waiting: "Ready to submit. Snapshot saved at {SNAPSHOT_PATH}."
 
 ## Hard rules
 
-- **Always** click Submit application after snapshot is saved.
+- **Never** submit without user confirmation unless auto-submit is
+  explicitly enabled in both answer-bank.yaml and config.yaml.
 - **Never** click "Save application" (draft) — always go through to Submit.
 - **Never** click Follow company / Discover / More jobs.
 - **If a "Complete your profile" popup appears**, STOP — do not fill

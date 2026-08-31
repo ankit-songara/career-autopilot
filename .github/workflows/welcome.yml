@@ -38,16 +38,14 @@ jobs:
             if (prior.total_count > 1) return;
 
             const body = isPr
-              ? `Welcome to career-ops, @${user}! Thanks for your first PR.\n\n`
+              ? `Welcome to career-autopilot, @${user}! Thanks for your first PR.\n\n`
                 + `A few things to know:\n`
                 + `- Tests run automatically, but on a first contribution they wait for a maintainer to approve the run: if it looks stuck, that queue is on us, not on you\n`
                 + `- Link a related issue if this is a feature (bug fixes, providers, docs and translations need no issue)\n`
                 + `- [CONTRIBUTING.md](https://github.com/${owner}/${repo}/blob/main/CONTRIBUTING.md) has the specifics\n\n`
-                + `We review every PR by hand. Join our [Discord](https://discord.gg/8pRpHETxa4) if anything blocks you.`
+                + `Every PR is reviewed by hand.`
               : `Thanks for opening your first issue, @${user}! We'll take a look soon.\n\n`
-                + `In the meantime:\n`
-                + `- [SUPPORT.md](https://github.com/${owner}/${repo}/blob/main/SUPPORT.md) covers setup help\n`
-                + `- Our [Discord](https://discord.gg/8pRpHETxa4) is the fastest place for quick answers`;
+                + `In the meantime, [SUPPORT.md](https://github.com/${owner}/${repo}/blob/main/SUPPORT.md) covers setup help.`;
 
             await github.rest.issues.createComment({
               owner, repo, issue_number: item.number, body });

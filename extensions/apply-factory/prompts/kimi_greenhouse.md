@@ -117,8 +117,11 @@ When the form is fully filled (all required non-EEO fields have values):
    }
    ```
 
-3. Click **Submit Application** (scrollIntoView + fresh rect first â€” the
-   button is usually below the fold).
+3. STOP and show the user what was filled. Only click **Submit Application**
+   (scrollIntoView + fresh rect first â€” the button is usually below the
+   fold) after the user confirms, or if auto-submit is explicitly enabled
+   (`behavior.auto_submit: true` in answer-bank.yaml AND `auto_submit: true`
+   in config.yaml).
 
 4. **Email OTP gate:** Greenhouse may respond with "A verification code was
    sent to <email>" and 8 Security-code boxes (anti-bot, plus invisible
