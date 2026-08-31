@@ -1,0 +1,48 @@
+# Answer bank for the auto-apply flow (LinkedIn Easy Apply, Greenhouse, Lever, Ashby).
+# Copy to answer-bank.yaml and fill in YOUR real values.
+# answer-bank.yaml is personal — keep it out of any public fork.
+
+contact:
+  first_name: "First"
+  last_name: "Last"
+  email: "you@example.com"
+  phone_country_code: "India (+91)"
+  phone: "9999999999"
+  city: "City, State, Country"
+
+compensation:
+  current_ctc_lpa: 0
+  expected_ctc_lpa: 0
+  currency: "INR"
+  notice_period_days: 30
+
+experience:
+  total_years: 0
+  experience_band: "x-y years"
+  current_company: "Company"
+  current_company_tenure: "x-y years"
+  # role-specific default when a skill's years are unknown but plausible
+  default_skill_years: 0
+
+authorization:
+  work_authorized_india: "Yes"
+  needs_sponsorship: "No"
+  willing_to_relocate: "Yes"
+  bachelors_degree: "Yes"
+
+profile_extras:
+  github: "https://github.com/your-handle"
+  industry: ""
+  org_size: ""
+  work_capacity: "Individual contributor"
+  preferred_work_setup: "Remote"
+  join_availability_days: "15-30"
+
+resume:
+  path: "C:/path/to/YourName_Resume.pdf"
+  linkedin_stored_name: "YourName_Resume.pdf"
+
+behavior:
+  auto_submit: false        # set true only once you trust the flow
+  mark_top_choice: false
+  uncheck_follow: true      # uncheck the pre-checked "Follow {company}" box
