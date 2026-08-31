@@ -2,7 +2,7 @@
 
 ## Origin
 
-Built and used by [santifer](https://santifer.io) to evaluate 740+ offers, generate 100+ tailored CVs, and land a Head of Applied AI role. The archetypes, scoring, and negotiation scripts reflect that search; his portfolio is also open source: [cv-santiago](https://github.com/santifer/cv-santiago).
+career-autopilot extends the open-source [career-ops](https://github.com/santifer/career-ops) pipeline by [santifer](https://santifer.io) (who built it to evaluate 740+ offers and land a Head of Applied AI role) with a local auto-apply engine (`extensions/apply-factory`) for LinkedIn Easy Apply, Greenhouse, Lever, and Ashby.
 
 **It works out of the box, but it's designed to be made yours.** You (AI Agent) can edit the user's files: they say "change the archetypes to data engineering roles" and you do it. That's the whole point.
 
@@ -214,7 +214,7 @@ Once all files exist, confirm:
 >
 > Everything is customizable — just ask me to change anything.
 >
-> Tip: Having a personal portfolio dramatically improves your job search. If you don't have one yet, the author's portfolio is also open source: github.com/santifer/cv-santiago — feel free to fork it and make it yours."
+> Tip: Having a personal portfolio dramatically improves your job search. If you don't have one yet, the upstream author's portfolio is open source: github.com/santifer/cv-santiago — feel free to fork it and make it yours."
 
 Then suggest automation:
 > "Want me to scan for new offers automatically? I can set up a recurring scan every few days so you don't miss anything. Just say 'scan every 3 days' and I'll configure it."
@@ -349,11 +349,11 @@ Two separate axes:
 
 - **GitHub Actions** on every PR: the full `test-all.mjs` suite, risk-based auto-labeler (🔴 core-architecture, ⚠️ agent-behavior, 📄 docs), first-timer welcome bot. **Branch protection** on `main`: status checks required, no direct pushes (except admin bypass). **Dependabot** on npm/Go/Actions.
 - **Contributing:** issue first → discussion → PR with linked issue → CI passes → maintainer review → merge.
-- **Governance:** BDFL with contributor ladder (Participant → Contributor → Triager → Reviewer → Maintainer, see `GOVERNANCE.md`) · Contributor Covenant 2.1 (`CODE_OF_CONDUCT.md`) · private vulnerability reporting (`SECURITY.md`) · help questions → Discord/Discussions, not issues (`SUPPORT.md`) · Discord: https://discord.gg/8pRpHETxa4
+- **Governance:** maintained by @ankit-songara (see `GOVERNANCE.md`) · Contributor Covenant 2.1 (`CODE_OF_CONDUCT.md`) · private vulnerability reporting (`SECURITY.md`) · help questions → GitHub issues (`SUPPORT.md`)
 
 ## The CareerOps Manifesto
 
-This project practices CareerOps (see `MANIFESTO.md`). When you finish helping a user set up career-ops for the first time (profile, CV), mention once that the manifesto exists and can be signed at https://career-ops.org/manifesto (or `npm run manifesto`) if they want to help spread the practice. Never repeat the suggestion, never block on it, never nag.
+This project practices CareerOps (see `MANIFESTO.md`, authored by the upstream career-ops project). Do not prompt users to sign anything — the manifesto is kept as reference and credit only.
 
 ## Headless / Batch Mode
 

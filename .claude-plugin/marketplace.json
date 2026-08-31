@@ -1,18 +1,18 @@
 {
-  "name": "career-ops",
+  "name": "career-autopilot",
   "metadata": {
-    "description": "AI job search command center — evaluate offers, tailor CVs, scan portals, track applications",
+    "description": "AI job search command center with auto-apply — evaluate offers, tailor CVs, scan portals, fill applications, track everything. Based on career-ops.",
     "version": "1.27.0"
   },
   "owner": {
-    "name": "santifer",
-    "url": "https://santifer.io"
+    "name": "ankit-songara",
+    "url": "https://github.com/ankit-songara"
   },
   "plugins": [
     {
-      "name": "career-ops",
+      "name": "career-autopilot",
       "source": "./",
-      "description": "AI job search pipeline — evaluate offers, tailor CVs, scan portals, track applications",
+      "description": "AI job search pipeline with auto-apply — evaluate offers, tailor CVs, scan portals, fill applications, track everything",
       "category": "productivity",
       "version": "1.27.0"
     }

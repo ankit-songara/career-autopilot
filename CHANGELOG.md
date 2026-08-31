@@ -1,5 +1,11 @@
 # Changelog
 
+> Entries below v1.27.0 are the upstream
+> [santifer/career-ops](https://github.com/santifer/career-ops) changelog,
+> kept as provenance. career-autopilot forked from v1.27.0 on 2026-08-31;
+> this fork's changes are tracked in its own
+> [commit history](https://github.com/ankit-songara/career-autopilot/commits/main).
+
 ## [1.27.0](https://github.com/santifer/career-ops/compare/career-ops-v1.26.0...career-ops-v1.27.0) (2026-08-18)
 
 

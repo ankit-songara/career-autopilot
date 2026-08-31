@@ -62,6 +62,13 @@ and CDP trusted events: screenshot → read → click, like a human would.
 git clone https://github.com/ankit-songara/career-autopilot
 cd career-autopilot
 npm install
+npm run setup:browser   # downloads Chromium for PDF generation (one-time, ~150MB)
+```
+
+For the auto-apply engine (Python):
+
+```bash
+pip install -r extensions/apply-factory/requirements.txt
 ```
 
 Then open the repo in an AI coding CLI (Claude Code, Codex, OpenCode, Qwen, Kimi, …) and just start talking —

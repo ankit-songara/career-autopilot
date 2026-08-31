@@ -129,8 +129,8 @@ opencode.json
 .mcp.json
 career-dashboard
 career-dashboard.exe
-package-lock.json
-!web/package-lock.json
+# package-lock.json is committed: on a public repo the lockfile is a
+# supply-chain pin, and npm ci needs it.
 
 # Playwright MCP server run artifacts (ephemeral, machine-local)
 .playwright-mcp/

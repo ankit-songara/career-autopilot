@@ -1,7 +1,7 @@
-{
+﻿{
   "name": "career-autopilot",
   "version": "1.27.0",
-  "description": "AI-powered job search automation with an auto-apply engine — extended from career-ops; works with any AI coding CLI (Claude Code, Codex, OpenCode, Antigravity, Grok, Qwen, Kimi, Copilot)",
+  "description": "AI-powered job search automation with an auto-apply engine - extended from career-ops; works with any AI coding CLI (Claude Code, Codex, OpenCode, Antigravity, Grok, Qwen, Kimi, Copilot)",
   "private": true,
   "engines": {
     "node": ">=18"
@@ -62,8 +62,7 @@
     "application:init": "node application-artifacts.mjs --init",
     "build:dashboard": "node build-dashboard.mjs",
     "serve:dashboard": "cd dashboard && go run . --path ..",
-    "postinstall": "npx playwright install chromium --with-deps || npx playwright install chromium --with-deps",
-    "manifesto": "node manifesto.mjs"
+    "setup:browser": "npx playwright install chromium --with-deps"
   },
   "keywords": [
     "ai",
@@ -84,7 +83,7 @@
   ],
   "author": "Ankit Songara (https://github.com/ankit-songara)",
   "contributors": [
-    "Santiago Fernández de Valderrama <hi@santifer.io> (https://santifer.io) — author of upstream career-ops"
+    "Santiago Fernandez de Valderrama <hi@santifer.io> (https://santifer.io) - author of upstream career-ops"
   ],
   "homepage": "https://github.com/ankit-songara/career-autopilot",
   "repository": {

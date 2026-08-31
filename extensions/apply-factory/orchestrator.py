@@ -29,6 +29,13 @@ def _cfg() -> dict:
     return yaml.safe_load((_ROOT / "config.yaml").read_text())
 
 
+def _kb_path(cfg: dict) -> str:
+    """Resolve the KB path and fail with an actionable hint if uninitialized."""
+    db_path = _kb_path(cfg)
+    db.require_initialized(db_path)
+    return db_path
+
+
 def _report_path(slug: str) -> Path:
     return _CAREEROPS / "reports" / f"{slug}.md"
 
@@ -67,7 +74,7 @@ def cmd_fill(args):
             f"    in lib/report_parser.py needs tweaking to match your format"
         )
 
-    db_path = str(_ROOT / cfg["paths"]["kb_db"])
+    db_path = _kb_path(cfg)
     answers = {}
 
     with db.tx(db_path) as conn:
@@ -279,7 +286,8 @@ def cmd_linkedin_search(args):
     import time
 
     (_ROOT / "data").mkdir(exist_ok=True)
-    output = args.output or f"/tmp/linkedin_{int(time.time())}.json"
+    import tempfile
+    output = args.output or str(Path(tempfile.gettempdir()) / f"linkedin_{int(time.time())}.json")
 
     prompt = ls.emit_search_prompt(
         query=args.query,
@@ -319,7 +327,7 @@ def cmd_linkedin_ingest(args):
 
 def cmd_kb_review(args):
     cfg = _cfg()
-    db_path = str(_ROOT / cfg["paths"]["kb_db"])
+    db_path = _kb_path(cfg)
     with db.tx(db_path) as conn:
         rows = conn.execute("""
             SELECT e.intent_key, e.answer, e.answer_type, e.source, e.created_at,
@@ -351,7 +359,7 @@ def cmd_kb_review(args):
 
 def cmd_kb_approve(args):
     cfg = _cfg()
-    db_path = str(_ROOT / cfg["paths"]["kb_db"])
+    db_path = _kb_path(cfg)
     with db.tx(db_path) as conn:
         row = knowledge.lookup_by_intent(conn, args.key)
         if not row:
@@ -373,7 +381,7 @@ def cmd_kb_approve(args):
 
 def cmd_kb_delete(args):
     cfg = _cfg()
-    db_path = str(_ROOT / cfg["paths"]["kb_db"])
+    db_path = _kb_path(cfg)
     with db.tx(db_path) as conn:
         row = knowledge.lookup_by_intent(conn, args.key)
         if not row:
@@ -392,7 +400,7 @@ def cmd_kb_delete(args):
 
 def cmd_briefing(args):
     cfg = _cfg()
-    db_path = str(_ROOT / cfg["paths"]["kb_db"])
+    db_path = _kb_path(cfg)
     from datetime import datetime, timedelta, timezone
 
     print(f"=== BRIEFING — {datetime.now().date()} ===\n")
@@ -454,7 +462,7 @@ def cmd_learn(args):
     if not snap.exists():
         sys.exit(f"no snapshot at {snap}\n  → did Kimi write it before submit?")
 
-    db_path = str(_ROOT / cfg["paths"]["kb_db"])
+    db_path = _kb_path(cfg)
     events = learner.learn_from_snapshot(str(snap), db_path)
     learner._print_summary(events)
 
@@ -485,7 +493,7 @@ def cmd_learn(args):
 
 def cmd_kb(args):
     cfg = _cfg()
-    db_path = str(_ROOT / cfg["paths"]["kb_db"])
+    db_path = _kb_path(cfg)
     with db.tx(db_path) as conn:
         if args.action == "list":
             rows = conn.execute("""

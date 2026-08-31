@@ -9,10 +9,23 @@ import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, writeFi
 import { homedir } from 'os';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import * as yaml from 'js-yaml';
-import dotenv from 'dotenv';
+// doctor is the tool people reach for when something is broken, so a missing
+// node_modules must produce "run npm install", not a raw ERR_MODULE_NOT_FOUND.
+// browser-extract.mjs is imported dynamically for the same reason: it pulls
+// js-yaml at static-import time, which would crash before this guard runs.
+let yaml, dotenv, resolveExtractorMode;
+try {
+  yaml = await import('js-yaml');
+  dotenv = (await import('dotenv')).default;
+  ({ resolveExtractorMode } = await import('./browser-extract.mjs'));
+} catch (err) {
+  if (err?.code === 'ERR_MODULE_NOT_FOUND') {
+    console.error('Dependencies are not installed yet. Run:  npm install');
+    process.exit(1);
+  }
+  throw err;
+}
 import { discoverPlugins, pluginRoots, pluginStatus } from './plugins/_engine.mjs';
-import { resolveExtractorMode } from './browser-extract.mjs';
 import { parseConfigByExtension } from './jsonc-parse.mjs';
 import { validateFlags } from './lib/cli-flags.mjs';
 import { geminiNodeFloor } from './lib/gemini-node-floor.mjs';

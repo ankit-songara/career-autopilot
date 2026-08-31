@@ -1,0 +1,6 @@
+# Python dependencies for the apply-factory engine.
+#   pip install -r requirements.txt
+pyyaml>=6.0
+requests>=2.31
+# Optional: only needed when APPLY_LLM_BACKEND=anthropic (see lib/llm.py)
+# anthropic>=0.40

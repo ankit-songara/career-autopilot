@@ -1,5 +1,10 @@
 # Contributors
 
+> **Note:** this file is the contributor roster of the upstream
+> [santifer/career-ops](https://github.com/santifer/career-ops) project, which
+> career-autopilot builds on. It is preserved here as credit — these people
+> built the pipeline core this fork extends.
+
 career-ops exists because of the people who build with it. thank you.
 
 ## Core Contributors

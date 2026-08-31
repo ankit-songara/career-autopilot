@@ -1,5 +1,8 @@
 # The CareerOps Manifesto
 
+> Authored by the upstream [career-ops](https://github.com/santifer/career-ops)
+> project; kept here as reference and credit.
+
 **v1.0, signed at 60,000 stars. July 14, 2026**
 
 Companies use AI to filter candidates.
