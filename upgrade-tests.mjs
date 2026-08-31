@@ -235,7 +235,18 @@ function newestAncestorTag(targetSha) {
 function prGate() {
   const targetSha = git(ROOT, 'rev-parse', 'HEAD');
   const newestOld = newestAncestorTag(targetSha);
-  if (!newestOld) { console.error('No release tag is an ancestor of HEAD — fetch tags first (CI: fetch-depth: 0)'); process.exit(1); }
+  if (!newestOld) {
+    // Two distinct no-tag situations. A shallow CI checkout of a repo that HAS
+    // release tags is an error (fetch tags first). This fork's history has no
+    // release tags at all yet — there is no released baseline to upgrade from,
+    // so the gate has nothing to qualify and must skip, not fail.
+    if (releaseTags().length === 0) {
+      console.log('SKIPPED: no release tags exist in this repository — no released baseline to upgrade from');
+      process.exit(0);
+    }
+    console.error('No release tag is an ancestor of HEAD — fetch tags first (CI: fetch-depth: 0)');
+    process.exit(1);
+  }
   console.log(`PR gate: ${newestOld} -> ${targetSha.slice(0, 8)}`);
   const { failures, skipped } = runLeg({ oldTag: newestOld, targetSha });
   // THREE states, never two: a skipped leg qualified nothing, so calling it
