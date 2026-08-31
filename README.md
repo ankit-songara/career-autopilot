@@ -5,6 +5,36 @@
 > Adapter runbooks: `extensions/apply-factory/prompts/kimi_*.md`. Personal answers live in a
 > gitignored `answer-bank.yaml` (see `answer-bank.example.yaml`).
 > Use responsibly: it drives *your* real browser session with *your* real answers; respect each site's terms.
+
+### How it works
+
+```mermaid
+flowchart LR
+    A["🔍 Scan<br/><small>Greenhouse · Lever · Ashby<br/>portal APIs, zero LLM cost</small>"]
+    B["🧮 Score<br/><small>AI rates fit vs your profile</small>"]
+    C["📄 Tailor CV<br/><small>per-application PDF</small>"]
+    D["🤖 Fill Form<br/><small>agent drives real Chrome via<br/>Kimi WebBridge + answer bank</small>"]
+    E["👀 Review<br/><small>human checks every<br/>application before submit</small>"]
+    F["📈 Track<br/><small>status, follow-ups & replies</small>"]
+
+    A ==>|new postings| B
+    B ==>|score ≥ 4/5| C
+    B -.->|low fit| X["🗑️ Discarded"]
+    C ==>|CV attached| D
+    D ==>|filled draft| E
+    E ==>|✅ submit| F
+    E -.->|✋ not good enough| X
+    F -.->|replies & follow-ups| E
+
+    style A fill:#0d1f3c,stroke:#2f81f7,stroke-width:2px,color:#e6edf3
+    style B fill:#1e1533,stroke:#a371f7,stroke-width:2px,color:#e6edf3
+    style C fill:#2a2008,stroke:#d29922,stroke-width:2px,color:#e6edf3
+    style D fill:#2e0f21,stroke:#f778ba,stroke-width:2px,color:#e6edf3
+    style E fill:#0c2416,stroke:#3fb950,stroke-width:2px,color:#e6edf3
+    style F fill:#0a2229,stroke:#58c4dc,stroke-width:2px,color:#e6edf3
+    style X fill:#21262d,stroke:#8b949e,stroke-width:1.5px,stroke-dasharray:4,color:#8b949e
+```
+
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/wordmark-dark.svg"><img src="docs/wordmark-light.svg" alt="career-ops" width="250" height="56"></picture></p>
 
 <div align="center">
