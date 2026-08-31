@@ -261,7 +261,14 @@ function prGate() {
 function canary() {
   const targetSha = git(ROOT, 'rev-parse', 'HEAD');
   const newestOld = newestAncestorTag(targetSha);
-  if (!newestOld) { console.error('No release tag is an ancestor of HEAD'); process.exit(1); }
+  if (!newestOld) {
+    if (releaseTags().length === 0) {
+      console.log('SKIPPED: no release tags exist in this repository — no released baseline to upgrade from');
+      process.exit(0);
+    }
+    console.error('No release tag is an ancestor of HEAD');
+    process.exit(1);
+  }
   const { failures } = runLeg({
     oldTag: newestOld, targetSha, label: 'canary',
     mutateMirror: (mirror, work) => {
@@ -317,7 +324,14 @@ function localPathsLeg() {
   const FORK_FILE = 'run-nightly.ps1';
   const baseSha = git(ROOT, 'rev-parse', 'HEAD');
   const oldTag = newestAncestorTag(baseSha);
-  if (!oldTag) { console.error('No release tag is an ancestor of HEAD — fetch tags first (CI: fetch-depth: 0)'); process.exit(1); }
+  if (!oldTag) {
+    if (releaseTags().length === 0) {
+      console.log('SKIPPED: no release tags exist in this repository — no released baseline to upgrade from');
+      process.exit(0);
+    }
+    console.error('No release tag is an ancestor of HEAD — fetch tags first (CI: fetch-depth: 0)');
+    process.exit(1);
+  }
 
   const work = realpathSync(mkdtempSync(join(tmpdir(), 'upgrade-localpaths-')));
   const failures = [];
